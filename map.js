@@ -53,6 +53,9 @@ let iconBanana = L.icon({
 
 });
 
+let popUp = L.marker([0,0], {icon: iconBanana}).addTo(iobMap);
+popUp.bindPopup("<b>The Banana Jam will start on 5th June 2021!</b>").openPopup();
+
 async function mapMarker() {
 
     console.log("estamos no mapMarker");
