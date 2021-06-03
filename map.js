@@ -1,6 +1,6 @@
 //const apiAIO = "https://io.adafruit.com/api/v2/arturvc/feeds";
 
-const participants = "network.json";
+const participants = "network.json"; // JSON with the information of the participants
 
 let dataParticipants = [];
 
@@ -41,16 +41,17 @@ const tilesMap = L.tileLayer(urlOSM, {
     id: 'arturvc/ckl3z4ddn2w3t17obvhl5d4vz',
     accessToken: 'pk.eyJ1IjoiYXJ0dXJ2YyIsImEiOiJjamVzaXNhaDUwM2dzMnFwa3A2MndjemJ6In0.QkEbXr54ao40qL9I1DuW0g',
     minZoom: 2,
-    maxZoom: 5
+    maxZoom: 6
 });
 tilesMap.addTo(iobMap);
+
+
 
 let iconBanana = L.icon({
     iconUrl: 'banana_icon50x50_BW.png',
     iconSize: [30, 30],
     iconAnchor: [15,15],
 //    iconAnchor: [15, -10],
-
 });
 
 let popUp = L.marker([0,0], {icon: iconBanana}).addTo(iobMap);
@@ -60,7 +61,7 @@ async function mapMarker() {
 
     console.log("estamos no mapMarker");
     for (let key in dataParticipants) {
-        //console.log(dataParticipants[key].urlAPI);
+        console.log(dataParticipants[key].urlAPI);
         markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
             icon: iconBanana
         }).bindPopup(

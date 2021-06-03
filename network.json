@@ -1,85 +1,49 @@
 [{
     "number": 1,
-    "name": "Artur",
+    "name": "Fortaleza",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": -2.0257,
     "long": -38.4848
 }, {
     "number": 2,
-    "name": "D1ana",
+    "name": "Tampere",
     "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
     "lat": 61.49911,
     "long": 23.78712
-}, {
+},  {
     "number": 3,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 45.116177,
-    "long": 7.742615
-}, {
-    "number": 4,
-    "name": "name",
+    "name": "Pretoria",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": -25.731340,
     "long": 28.218370
 }, {
-    "number": 5,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 48.209209,
-    "long": 16.372780
-}, {
-    "number": 6,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 38.722252,
-    "long": -9.139337
-}, {
-    "number": 7,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 37.983810,
-    "long": 23.727539
-}, {
-    "number": 8,
-    "name": "name",
+    "number": 4,
+    "name": "Barcelona",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": 41.385063,
     "long": 2.173404
 }, {
-    "number": 9,
-    "name": "name",
+    "number": 5,
+    "name": "Haifa",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": 32.794044,
     "long": 34.989571
 }, {
-    "number": 10,
-    "name": "name",
+    "number": 6,
+    "name": "Turin",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": -0.22985,
-    "long": -78.52495
+    "lat": 45.07049,
+    "long": 7.68682
 }, {
-    "number": 11,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 37.316048,
-    "long": 13.6623483
-}, {
-    "number": 12,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
+    "number": 7,
+    "name": "Athens",
+    "urlAPI": "https://io.adafruit.com/api/v2/dakogline/feeds",
     "lat": 37.97945,
     "long": 23.71622
 }, {
-    "number": 13,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": 31.22222,
-    "long": 121.45806
-}, {
-    "number": 14,
-    "name": "name",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-    "lat": -27.46794,
-    "long": 153.02809
+    "number": 8,
+    "name": "Lisbon",
+    "urlAPI": "https://io.adafruit.com/api/v2/verafearns/feeds",
+    "lat": 38.71667,
+    "long": -9.13333
 }]
