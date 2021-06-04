@@ -10,7 +10,7 @@
     "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
     "lat": 61.49911,
     "long": 23.78712
-},  {
+}, {
     "number": 3,
     "name": "Pretoria",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
@@ -19,7 +19,7 @@
 }, {
     "number": 4,
     "name": "Barcelona",
-    "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
+    "urlAPI": "https://io.adafruit.com/api/v2/ferranaltarriba/feeds",
     "lat": 41.385063,
     "long": 2.173404
 }, {
@@ -28,7 +28,7 @@
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": 32.794044,
     "long": 34.989571
-},{
+}, {
     "number": 6,
     "name": "Athens",
     "urlAPI": "https://io.adafruit.com/api/v2/dakogline/feeds",

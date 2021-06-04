@@ -25,8 +25,6 @@ async function getIoBData() {
         const resposta = await fetch(dataParticipants[key].urlAPI);
         dataAio[key] = await resposta.json();
     }
-
-
     mapMarker();
 }
 
@@ -50,26 +48,50 @@ tilesMap.addTo(iobMap);
 let iconBanana = L.icon({
     iconUrl: 'banana_icon50x50_BW.png',
     iconSize: [30, 30],
-    iconAnchor: [15,15],
-//    iconAnchor: [15, -10],
+    iconAnchor: [15, 15],
+    //    iconAnchor: [15, -10],
 });
 
-let popUp = L.marker([0,0], {icon: iconBanana}).addTo(iobMap);
-popUp.bindPopup("<b>The Banana Jam will start on 5th June 2021!</b>").openPopup();
+//let popUp = L.marker([0,0], {icon: iconBanana}).addTo(iobMap);
+//popUp.bindPopup("<b>The Banana Jam will start on 5th June 2021!</b>").openPopup();
 
 async function mapMarker() {
 
-    console.log("estamos no mapMarker");
+    //console.log("estamos no mapMarker");
+
+
     for (let key in dataParticipants) {
-        console.log(dataParticipants[key].urlAPI);
+        //console.log(dataParticipants[key].urlAPI);
+        let color, humidity, temperature;
+        for (let i = 0; i < 3; i++) {
+            if (dataAio[key][i].name == "color") {
+                color = dataAio[key][i].last_value;
+            } else {}
+        }
+       // console.log(color);
+
+        for (let i = 0; i < 3; i++) {
+            if (dataAio[key][i].name == "temperature") {
+                temperature = dataAio[key][i].last_value;
+            } else {}
+        }
+       // console.log(temperature);
+
+        for (let i = 0; i < 3; i++) {
+            if (dataAio[key][i].name == "humidity") {
+                humidity = dataAio[key][i].last_value;
+            } else {}
+        }
+        //console.log(humidity);
+
         markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
             icon: iconBanana
         }).bindPopup(
             "<strong> " + dataParticipants[key].name + "</strong> <br>" +
             "Updated at: " + dataAio[key][0].last_value_at + "<br>" +
-            "Colour:" + dataAio[key][0].last_value + " <svg width='20' height='20' ><rect width='20' height='20' fill='" + dataAio[key][0].last_value + "'/></svg><br>" +
-            "Humidity: " + dataAio[key][1].last_value + "% <br>" +
-            "Temperature: " + dataAio[key][2].last_value + "°C"
+            "Colour:" + color + " <svg width='20' height='20' ><rect width='20' height='20' fill='" + color + "'/></svg><br>" +
+            "Humidity: " + humidity + "% <br>" +
+            "Temperature: " + temperature + "°C"
         );
         markers[key].addTo(iobMap);
 
