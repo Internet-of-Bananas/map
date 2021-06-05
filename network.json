@@ -1,12 +1,12 @@
 [{
     "number": 1,
-    "name": "Fortaleza",
+    "name": "Prata",
     "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
     "lat": -2.0257,
     "long": -38.4848
 }, {
     "number": 2,
-    "name": "Tampere",
+    "name": "Liliana",
     "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
     "lat": 61.49911,
     "long": 23.78712
@@ -18,7 +18,7 @@
     "long": 28.218370
 }, {
     "number": 4,
-    "name": "Barcelona",
+    "name": "Bananenstein",
     "urlAPI": "https://io.adafruit.com/api/v2/ferranaltarriba/feeds",
     "lat": 41.385063,
     "long": 2.173404
@@ -30,20 +30,20 @@
     "long": 34.989571
 }, {
     "number": 6,
-    "name": "Athens",
+    "name": "Ba Nana",
     "urlAPI": "https://io.adafruit.com/api/v2/dakogline/feeds",
     "lat": 37.97945,
     "long": 23.71622
 }, {
     "number": 7,
-    "name": "Lisbon",
+    "name": "Banano and Banana",
     "urlAPI": "https://io.adafruit.com/api/v2/verafearns/feeds",
     "lat": 38.71667,
     "long": -9.13333
 },
 {
     "number": 8,
-    "name": "Vienna",
+    "name": "Bananatrooper",
     "urlAPI": "https://io.adafruit.com/api/v2/limaLimao/feeds",
     "lat": 48.210033,
     "long": 16.363449
