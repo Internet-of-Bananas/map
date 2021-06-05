@@ -40,4 +40,11 @@
     "urlAPI": "https://io.adafruit.com/api/v2/verafearns/feeds",
     "lat": 38.71667,
     "long": -9.13333
+},
+{
+    "number": 8,
+    "name": "Vienna",
+    "urlAPI": "https://io.adafruit.com/api/v2/limaLimao/feeds",
+    "lat": 48.210033,
+    "long": 16.363449
 }]
