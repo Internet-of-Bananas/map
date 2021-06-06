@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap" rel="stylesheet">
+
+
+
+  <title>Internet of Bananas</title>
+
+  <link rel="stylesheet" href="estilo.css">
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class=" col-12">
+        <div class="row">
+          <div class="col" id="titulo">
+
+
+            <h1> <img src="iob_logo_white.png" width="50" /> Internet of Bananas</h1>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Map</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="participants.html">Participants</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+            </ul>
+
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <h3>Temperature</h3>
+            <canvas id="chartTemperature"></canvas>
+            <h3>Humidity</h3>
+            <canvas id="chartHumidity"></canvas>
+
+            <script>
+              const participants = "network.json"; // JSON with the information of the participants
+              let dataParticipants = [];
+              let dataAio = [];
+
+              let name = [];
+              let color = [];
+              let temperature = [];
+              let humidity = [];
+              let time = [];
+
+              getParticipants();
+
+              async function getParticipants() {
+                const resposta = await fetch(participants);
+                const dados = await resposta.json();
+                dataParticipants = dados;
+                //console.log(dataParticipants);
+                getIoBData();
+              }
+
+              async function getIoBData() {
+                for (let key in dataParticipants) {
+                  //console.log(dataParticipants[key].urlAPI);
+                  const resposta = await fetch(dataParticipants[key].urlAPI);
+                  dataAio[key] = await resposta.json();
+                }
+                //console.log(dataAio);
+                transferData();
+              }
+
+
+              async function transferData() {
+
+                console.log("estamos no transferData");
+
+
+                for (let key in dataParticipants) {
+                  //console.log(dataParticipants[key].name);
+                  name.push(dataParticipants[key].name);
+
+                  time.push(dataAio[key][0].last_value_at);
+
+                  for (let i = 0; i < 3; i++) {
+                    if (dataAio[key][i].name == "color") {
+                      color.push(dataAio[key][i].last_value);
+                    } else {}
+                  }
+                  // console.log(color);
+
+                  for (let i = 0; i < 3; i++) {
+                    if (dataAio[key][i].name == "temperature") {
+                      temperature.push(parseFloat(dataAio[key][i].last_value));
+                    } else {}
+                  }
+                  // console.log(temperature);
+
+                  for (let i = 0; i < 3; i++) {
+                    if (dataAio[key][i].name == "humidity") {
+                      humidity.push(parseFloat(dataAio[key][i].last_value));
+                    } else {}
+                  }
+                  //console.log(humidity);
+                  //time[key] = name[key] + " | " + time[key];
+                }
+                //console.log(name);
+                //console.log(color);
+                //console.log(temperature);
+                //console.log(time);
+                plotTemperature();
+                plotHumidity();
+              }
+
+              async function plotTemperature() {
+                let ctx = document.getElementById('chartTemperature').getContext('2d');
+                let myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: name,
+                    datasets: [{
+                      label: 'Temperature',
+                      data: temperature,
+                      backgroundColor: color
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      x: {
+                        ticks: {
+                          color: '#ffffff'
+                        },
+                        grid: {
+                          display: false
+                        },
+                        title: {
+                          display: false
+                        }
+                      },
+                      y: {
+                        ticks: {
+                          color: '#ffffff',
+                          callback: function (value, index, values) {
+                            return value + "°C";
+                          }
+                        },
+                        beginAtZero: true,
+                        grid: {
+                          color: '#ffffff'
+                        }
+                      }
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                      }
+                    }
+                  }
+                });
+              }
+              async function plotHumidity() {
+                let ctx = document.getElementById('chartHumidity').getContext('2d');
+                let myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: name,
+                    datasets: [{
+                      label: 'Humidity',
+                      data: humidity,
+                      backgroundColor: color
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      x: {
+                        ticks: {
+                          color: '#ffffff'
+                        },
+                        grid: {
+                          display: true
+                        }
+                      },
+                      y: {
+                        ticks: {
+                          color: '#ffffff',
+                          callback: function (value, index, values) {
+                            return value + "%";
+                          }
+                        },
+                        beginAtZero: true,
+                        grid: {
+                          color: '#ffffff'
+                        }
+                      }
+                    },
+                    plugins: {
+                      legend: {
+                        display: false
+                      },
+                      tooltip: {
+
+                      }
+                    }
+                  }
+                });
+              }
+
+              /*
+          plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        var label = context.dataset.label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                        }
+                        return label;
+                    }
+                }
+            }
+        }
+              */
+            </script>
+            <p>The color of the bar correspond to the color of the banana skin.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
