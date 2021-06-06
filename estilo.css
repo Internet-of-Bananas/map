@@ -15,7 +15,24 @@ body {
     height: 500px;
 }
 
-h1{
+#chartTemperature {
+    padding: 10px;
+    width: 100%;
+    height: 50%;
+}
+
+#chartHumidity {
+    width: 100%;
+    height: 50%;
+}
+
+#chartColor{
+    width: 100%;
+    height: 50%;
+    background-color: white;
+}
+
+h1 {
     color: #ffffff;
 }
 
@@ -50,12 +67,12 @@ a:active {
     text-decoration: none;
 }
 
-.leaflet-control-attribution.leaflet-control{
+.leaflet-control-attribution.leaflet-control {
     background-color: #8a8a8a;
     color: #ffffff;
 }
 
-.card{
+.card {
     border: none;
     color: #ffffff;
     background-color: #8a8a8a;
