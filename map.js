@@ -15,8 +15,11 @@ async function getParticipants() {
     dataParticipants = dados;
     //console.log(dataParticipants);
 
-    getIoBData();
+    mapMarker();
 
+    // ****
+    // getIoBData(); 
+    // ****
 }
 
 async function getIoBData() {
@@ -62,28 +65,37 @@ async function mapMarker() {
 
     for (let key in dataParticipants) {
         //console.log(dataParticipants[key].urlAPI);
+       
+       /* 
+       // DADOS DAS ESTAÇÕES DESATIVADOS
+
         let color, humidity, temperature;
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "color") {
                 color = dataAio[key][i].last_value;
             } else {}
         }
-       // console.log(color);
+        // console.log(color);
 
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "temperature") {
                 temperature = dataAio[key][i].last_value;
             } else {}
         }
-       // console.log(temperature);
+        // console.log(temperature);
 
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "humidity") {
                 humidity = dataAio[key][i].last_value;
             } else {}
         }
+
+        */
+
         //console.log(humidity);
 
+        /*
+        Pino com os dados das estações.
         markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
             icon: iconBanana
         }).bindPopup(
@@ -92,6 +104,18 @@ async function mapMarker() {
             "Colour:" + color + " <svg width='20' height='20' ><rect width='20' height='20' fill='" + color + "'/></svg><br>" +
             "Humidity: " + humidity + "% <br>" +
             "Temperature: " + temperature + "°C"
+        );
+        */
+
+        markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
+            icon: iconBanana
+        }).bindPopup(
+            "<strong> " + dataParticipants[key].name + "</strong> <br>" +
+            "Station disconnected. <br>" +
+            "Updated at: " + "<br>" +
+            "Colour:" +  "<br>" +
+            "Humidity: " + " <br>" +
+            "Temperature: "
         );
         markers[key].addTo(iobMap);
 

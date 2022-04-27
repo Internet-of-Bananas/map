@@ -58,12 +58,16 @@
         </div>
         <div class="row">
           <div class="col-md-8">
-            <h3>Temperature</h3>
-            <canvas id="chartTemperature"></canvas>
-            <h3>Humidity</h3>
-            <canvas id="chartHumidity"></canvas>
+            <p>The IoB network was online from 5th to 12th June 2021.</p>
+
 
             <script>
+              /*< h3 > Temperature < /h3> <
+                canvas id = "chartTemperature" > < /canvas> <
+                h3 > Humidity < /h3> <
+                canvas id = "chartHumidity" > < /canvas>
+                */
+
               const participants = "network.json"; // JSON with the information of the participants
               let dataParticipants = [];
               let dataAio = [];
@@ -74,7 +78,7 @@
               let humidity = [];
               let time = [];
 
-              getParticipants();
+              //getParticipants();
 
               async function getParticipants() {
                 const resposta = await fetch(participants);
@@ -109,6 +113,14 @@
                   for (let i = 0; i < 3; i++) {
                     if (dataAio[key][i].name == "color") {
                       color.push(dataAio[key][i].last_value);
+                      console.log(color[key].length);
+
+                      if (color[key].length == 6) {
+                        color[key] += '0';
+                        console.log(color[key] + " ok!");
+                      }
+
+
                     } else {}
                   }
                   // console.log(color);
@@ -129,7 +141,7 @@
                   //time[key] = name[key] + " | " + time[key];
                 }
                 //console.log(name);
-                //console.log(color);
+                console.log(color);
                 //console.log(temperature);
                 //console.log(time);
                 plotTemperature();
@@ -249,8 +261,7 @@
         }
               */
             </script>
-            <p>The color of the bar correspond to the color of the banana skin.
-            </p>
+           
 
           </div>
         </div>
