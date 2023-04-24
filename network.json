@@ -1,51 +1,37 @@
-[{
+[
+    {
         "number": 1,
-        "name": "Prata",
+        "name": "Dourada",
         "urlAPI": "https://io.adafruit.com/api/v2/arturvc/feeds",
-        "lat": -2.0257,
-        "long": -38.4848
-    }, {
-        "number": 2,
-        "name": "Liliana",
-        "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
-        "lat": 61.49911,
-        "long": 23.78712
-    }, {
-        "number": 3,
-        "name": "Benjamin Banana",
-        "urlAPI": "https://io.adafruit.com/api/v2/AnniqueSMITH/feeds",
-        "lat": -25.731340,
-        "long": 28.218370
-    }, {
-        "number": 4,
-        "name": "Bananenstein",
-        "urlAPI": "https://io.adafruit.com/api/v2/ferranaltarriba/feeds",
-        "lat": 41.385063,
-        "long": 2.173404
-    }, {
-        "number": 5,
-        "name": "Baaaaanaaaanaaa",
-        "urlAPI": "https://io.adafruit.com/api/v2/ychisik/feeds",
-        "lat": 32.794044,
-        "long": 34.989571
-    }, {
-        "number": 6,
-        "name": "Ba Nana",
-        "urlAPI": "https://io.adafruit.com/api/v2/dakogline/feeds",
-        "lat": 37.97945,
-        "long": 23.71622
-    }, {
-        "number": 7,
-        "name": "Banano and Banana",
-        "urlAPI": "https://io.adafruit.com/api/v2/verafearns/feeds",
-        "lat": 38.68773,
-        "long": -9.14663
+        "lat": -7.229,
+        "long": -39.3124
     },
     {
-        "number": 8,
-        "name": "Bananatrooper",
+        "number": 2,
+        "name": "alt.CHI One",
+        "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
+        "lat": 53.54207,
+        "long": 9.78562
+    },
+    {
+        "number": 3,
+        "name": "Bananenstein",
+        "urlAPI": "https://io.adafruit.com/api/v2/ferranaltarriba/feeds",
+        "lat": 53.56207,
+        "long": 9.88562
+    },
+    {
+        "number": 4,
+        "name": "Carmen Banana",
         "urlAPI": "https://io.adafruit.com/api/v2/limaLimao/feeds",
-        "lat": 48.210033,
-        "long": 16.363449
+        "lat": 53.58207,
+        "long": 9.98562
+    },
+    {
+        "number": 5,
+        "name": "Banarama",
+        "urlAPI": "https://io.adafruit.com/api/v2/banarama/feeds",
+        "lat": 48.5,
+        "long": 16.6
     }
 ]
