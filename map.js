@@ -15,10 +15,11 @@ async function getParticipants() {
     dataParticipants = dados;
     //console.log(dataParticipants);
 
-    mapMarker();
 
     // ****
-    // getIoBData(); 
+    //mapMarker();
+
+    getIoBData();
     // ****
 }
 
@@ -27,7 +28,9 @@ async function getIoBData() {
         //console.log(dataParticipants[key].urlAPI);
         const resposta = await fetch(dataParticipants[key].urlAPI);
         dataAio[key] = await resposta.json();
+
     }
+    console.log(dataAio);
     mapMarker();
 }
 
@@ -35,16 +38,18 @@ async function getIoBData() {
 
 let markers = [];
 
-const iobMap = L.map('mapId').setView([0, 0], 2);
+const iobMap = L.map('mapId').setView([0, 0], 9);
 const urlOSM = 'https://api.mapbox.com/styles/v1/{id}/tiles/256/{z}/{x}/{y}?access_token={accessToken}';
 const tilesMap = L.tileLayer(urlOSM, {
     attribution: 'Map data &copy;  <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'arturvc/ckl3z4ddn2w3t17obvhl5d4vz',
     accessToken: 'pk.eyJ1IjoiYXJ0dXJ2YyIsImEiOiJjamVzaXNhaDUwM2dzMnFwa3A2MndjemJ6In0.QkEbXr54ao40qL9I1DuW0g',
     minZoom: 2,
-    maxZoom: 6
+    maxZoom: 9
 });
 tilesMap.addTo(iobMap);
+
+
 
 
 
@@ -65,37 +70,35 @@ async function mapMarker() {
 
     for (let key in dataParticipants) {
         //console.log(dataParticipants[key].urlAPI);
-       
-       /* 
-       // DADOS DAS ESTAÇÕES DESATIVADOS
+
 
         let color, humidity, temperature;
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "color") {
                 color = dataAio[key][i].last_value;
-            } else {}
+            } else { }
         }
         // console.log(color);
 
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "temperature") {
                 temperature = dataAio[key][i].last_value;
-            } else {}
+            } else { }
         }
         // console.log(temperature);
 
         for (let i = 0; i < 3; i++) {
             if (dataAio[key][i].name == "humidity") {
                 humidity = dataAio[key][i].last_value;
-            } else {}
+            } else { }
         }
 
-        */
+
 
         //console.log(humidity);
 
-        /*
-        Pino com os dados das estações.
+
+        //Pino com os dados das estações.
         markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
             icon: iconBanana
         }).bindPopup(
@@ -105,21 +108,44 @@ async function mapMarker() {
             "Humidity: " + humidity + "% <br>" +
             "Temperature: " + temperature + "°C"
         );
-        */
 
-        markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
-            icon: iconBanana
-        }).bindPopup(
-            "<strong> " + dataParticipants[key].name + "</strong> <br>" +
-            "Station disconnected. <br>" +
-            "Updated at: " + "<br>" +
-            "Colour:" +  "<br>" +
-            "Humidity: " + " <br>" +
-            "Temperature: "
-        );
+        /*
+                markers[key] = L.marker([dataParticipants[key].lat, dataParticipants[key].long], {
+                    icon: iconBanana
+                }).bindPopup(
+                    "<strong> " + dataParticipants[key].name + "</strong> <br>" +
+                    "Station disconnected. <br>" +
+                    "Updated at: " + "<br>" +
+                    "Colour:" +  "<br>" +
+                    "Humidity: " + " <br>" +
+                    "Temperature: "
+                );
+                */
         markers[key].addTo(iobMap);
 
     }
+
+    /////////////
+    let coordenadas = [];
+
+    // Loop through the lugares array and add the latLngs to the array
+    for (let i = 0; i < dataParticipants.length; i++) {
+        let lat = dataParticipants[i].lat;
+        let lng = dataParticipants[i].long;
+        let latLng = L.latLng(lat, lng);
+        coordenadas.push(latLng);
+    }
+
+    // Use the latLngs array to create a LatLngBounds object
+    let bounds = L.latLngBounds(coordenadas);
+
+    // Use the fitBounds method to zoom and pan the map to show all of the markers
+    iobMap.fitBounds(bounds, {
+        padding: [8, 8]
+    });
+    /////////////
+
+
 
 }
 
