@@ -45,7 +45,7 @@ const tilesMap = L.tileLayer(urlOSM, {
     id: 'arturvc/ckl3z4ddn2w3t17obvhl5d4vz',
     accessToken: 'pk.eyJ1IjoiYXJ0dXJ2YyIsImEiOiJjamVzaXNhaDUwM2dzMnFwa3A2MndjemJ6In0.QkEbXr54ao40qL9I1DuW0g',
     minZoom: 2,
-    maxZoom: 9
+    maxZoom: 10
 });
 tilesMap.addTo(iobMap);
 
