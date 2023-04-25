@@ -8,21 +8,21 @@
     },
     {
         "number": 2,
-        "name": "alt.CHI One",
+        "name": "alt CHI One",
         "urlAPI": "https://io.adafruit.com/api/v2/MattiThibault/feeds",
         "lat": 53.54207,
         "long": 9.78562
     },
     {
         "number": 3,
-        "name": "Bananenstein",
+        "name": "alt CHI Two",
         "urlAPI": "https://io.adafruit.com/api/v2/ferranaltarriba/feeds",
         "lat": 53.56207,
         "long": 9.88562
     },
     {
         "number": 4,
-        "name": "Carmen Banana",
+        "name": "alt CHI Three",
         "urlAPI": "https://io.adafruit.com/api/v2/limaLimao/feeds",
         "lat": 53.58207,
         "long": 9.98562
